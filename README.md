@@ -1,5 +1,5 @@
 # bootcamp
 
 ## sub-heading
-~ welcome to bootcamp.
-  ~ hi everyone.
+- welcome to bootcamp.
+  - hi everyone.
