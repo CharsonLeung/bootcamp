@@ -4,6 +4,6 @@ public class Helloworld {
     //你好
     
     //System.out.printin is a tool
-    System.out.println("goodbye");
+    System.out.println("Helloworld");
   }
 }
