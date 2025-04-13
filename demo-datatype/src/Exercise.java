@@ -35,8 +35,8 @@ public class Exercise {
     System.out.println(bzz);
 
 
-    double distKm = 42.195 * 100;
-    System.out.println("Distance to run:");
+    double distKm = 21.0975 * 100;
+    System.out.println("Distance to run in km:");
     System.out.println(distKm / 100);
     int paceMin = 4 * 10;
     System.out.println("pace in minutes:");
@@ -47,10 +47,27 @@ public class Exercise {
     double lengthMin = 6;
     double paceSecDeci;
     paceSecDeci = (paceSec / lengthMin);
-    System.out.println(paceSecDeci);
+    //System.out.println(paceSecDeci);
     double pace = paceMin + paceSecDeci;
-    System.out.println(pace);
+    //System.out.println(pace);
+    System.out.println("your pace:");
+    System.out.println(paceMin / 10);
+    System.out.println("minute(s)");
+    System.out.println(paceSec);
+    System.out.println("second(s)");
     double time = (distKm * pace) / 1000;
-    System.out.println(time);
+    System.out.println("Your finishing time for the following distance in km:");
+    System.out.println(distKm / 100);
+    System.out.println("is as follow:");
+    //System.out.println(time);
+    
+    int timeMin = (int)time;
+    System.out.println(timeMin);
+    System.out.println("minutes");
+    double timeSec = time * 10 - timeMin * 10;
+    //System.out.println(timeSec);
+    double timeSecR = timeSec * 6;
+    System.out.println((int)timeSecR);
+    System.out.println("seconds.");
   }
 }
