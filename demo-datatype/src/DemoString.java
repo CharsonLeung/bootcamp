@@ -32,12 +32,14 @@ public class DemoString {
     // print the first character of s3
     System.out.println(s3.charAt(0));
     // Find the middle character of name
-    String name = "Joey"; // o
     // Joey -> e / o
     // Vincent -> c / n
-    String s4 = "Vincent";
-    System.out.println(s4.charAt(s4.length() / 2));
-    System.out.println(s4.charAt(s4.length() / 2 - 1));
+    String name1 = "Joey";
+    String name2 = "Vincent";
+    System.out.println(name1.charAt(name1.length() / 2));
+    System.out.println(name1.charAt(name1.length() / 2 - 1));
+    System.out.println(name2.charAt(name2.length() / 2));
+    System.out.println(name2.charAt(name2.length() / 2 - 1));
 
   }
   
