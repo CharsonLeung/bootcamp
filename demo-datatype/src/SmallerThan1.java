@@ -12,5 +12,15 @@ public class SmallerThan1 {
     double result = (k * (m + minSec)*10)/10000;
     //double resultSec = 
     System.out.println(result); //wanted: 10km * 4:30 = 45 mins
+    int k1 = 20;
+    k1 *= 10;
+    System.out.println(k1);
+    k1 /= 5;
+    System.out.println(k1);
+
+    float f1 = 0.3f + 0.7f + 0.3f;
+    System.out.println(f1);
+
+
   }
 }

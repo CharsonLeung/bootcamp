@@ -21,6 +21,7 @@ public class DemoString {
     // Function 3: charAt()
     // index starts with 0
     // index range 0-6, length=7
+    s3 = "Vincent";
     System.out.println(s3.charAt(2)); // 'n', the char at position 3
     // System.out.println(s3.charAt(7)); // ! out of range
     // System.out.println(s3.charAt(-1)); // out of range
