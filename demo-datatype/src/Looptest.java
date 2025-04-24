@@ -4,7 +4,7 @@ public class Looptest {
     
     
     // t ^ n
-    int t = 2; // change this value to be powered
+    int t = 3; // change this value to be powered
     int t1 = t;
     int n1 = t;
     int pw = 12; // select the power to
@@ -17,9 +17,10 @@ public class Looptest {
     System.out.println(t1 + "^" + pw + " = " + t);
 
     // 1(n+1)(n+2)(n+3)...(factorial)
+    System.out.println("**** Factorial! ****");
     int i;
     int n = 1;
-    int ff = 7;
+    int ff = 9;
    
     for ( i = 0; i <= ff - 1 ; i++) {
       // n2 = 1(2), n3 = 2(3), n4 = 6(4), n5 = 24(5), n = 120(6), ...
@@ -62,16 +63,22 @@ public class Looptest {
   System.out.println(m1);
   System.out.println(e);
   System.out.println("=================================");
-  int a = 9; // a ^ ap
-  int ap = 4;
+  int a = 6; // a ^ ap
+  int ap = 8;
   int b = a;
   for (i = 0; i < ap - 1; i++) {
     a = a * b;
   }
-  System.out.println(a);
+  System.out.println("The number to be tested is " + a);
   
-    if ( a % 2 == 0 ) {System.out.println("The number is even.");} else 
-    {System.out.println("The number is odd.");}
+    //if ( a % 2 == 0 ) {System.out.println("The number is even.");}
+    //else if (a % 3 == 0) {System.out.println("This number is dividable by 3.");}
+    //else {if (a % 7 == 0) {System.out.println("This number is dividable by 7.");}}
+    for (i = 9; i > 0; i--) {
+      if (a % i == 0) {System.out.println("The number " + a + " is dividable by " + i);} 
+     else {System.out.println("The number " + a + " is not dividable by " + i);} }
+    //if (a % 9 == 0 ) 
+  System.out.println("try again:");
   
 
 

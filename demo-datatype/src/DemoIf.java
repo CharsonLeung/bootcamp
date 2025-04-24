@@ -120,7 +120,48 @@ public class DemoIf {
       System.out.println("no");
     }
 
+    // switch
+    char grade = 'B';
+    if (grade == 'A') {
+      System.out.println("The grade is A.");
+    } else if (grade == 'B') {
+      System.out.println("The grade is B.");
+    } else if (grade == 'C') {
+      System.out.println("The grade is C.");
+    } else {
+      System.out.println("Fail.");
+    }
 
+    // Alternation
+    // ! 1. You should (must) use break for all cases in switch statements.
+    // ! 2. switch CANNOT check the range of value.
+    switch (grade) {
+      case 'A':
+        System.out.println("Grade is A.");
+        break;
+      case 'B':
+        System.out.println("Grade is B.");
+        break;
+      case 'C':
+        System.out.println("Grade is C.");
+        break;
+
+      default:
+        System.out.println("Fail.");
+    }
+    score = 85;
+    if (score >= 90) {
+      grade = 'A';
+    } else if (score >= 80 && score < 90) {
+      grade = 'B';
+    } else if (score >= 70 && score < 80) {
+      grade = 'C';
+    } else {
+      grade = 'F';
+    }
+    System.out.println("The grade is " + grade);
+
+    //You cannot use switch to handle the above scenario.
 
   }
     
