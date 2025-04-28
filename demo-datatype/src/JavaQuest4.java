@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class JavaQuest4 {
   /**
    * Exercise: Print 10 numbers: they must be even and > 0, and divisible by 3
@@ -12,10 +10,15 @@ public class JavaQuest4 {
     // 1. Even numbers
     // 2. Divisible by 3
     // 3. > 0
+    int counter = 0;
     for (int i = 0; i < 100; i++) {
       // code here ...
-      if (((i % 2 == 0 && i % 3 == 0) && i > 0) && i <= 2 * 3 * 10) {
+      if ((i % 2 == 0 && i % 3 == 0) && i > 0) {
+        if (counter >= 10) {
+          break;
+        }
         System.out.println(i);
+        counter++;
       }
     }
     }
