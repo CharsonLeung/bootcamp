@@ -21,7 +21,7 @@ public class BWV {
   }
   public String getInst() {
     return this.inst;
-  }
+  } 
   public static void main(String[] args) {
       // BWV 996 - BWV 1012
     //String looper = "b";

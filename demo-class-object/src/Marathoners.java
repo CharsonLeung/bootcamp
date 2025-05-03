@@ -26,6 +26,15 @@ public class Marathoners {
   public void setRecordAge(int recordAge) {
     this.recordAge = recordAge;
   }
+  public void setAllInput(String name, String country, LocalDate birthDay, String personalRecord, int recordYear,
+  int recordAge) {
+    this.name = name;
+    this.country = country;
+    this.birthDay = birthDay;
+    this.personalRecord = personalRecord;
+    this.recordYear = recordYear;
+    this.recordAge = recordAge;
+  }
   public String getName() {
     return this.name;
   }
@@ -81,11 +90,20 @@ public class Marathoners {
   m5.setPersonalRecord("2:01:41");
   m5.setRecordYear(2019);
 
+  Marathoners m6 = new Marathoners();
+  m6.setAllInput("Charson Leung", "Hong Kong", LocalDate.of(1989, 11, 17), "2:53:44",2024, 34);
+
+
   // String q = m1;
-System.out.println("Name" + m2.getName() + 
+System.out.println("Name: " + m2.getName() + 
                    ", Country: " + m2.getCountry() + 
                    ", Date of Birth: " + m2.getBirthDay() + 
                    ", Personal Record: " + m2.getPersonalRecord() +
                    ", Year of Record: " + m2.getRecordYear());
+System.out.println("Name: " + m6.getName() + 
+", Country: " + m6.getCountry() + 
+", Date of Birth: " + m6.getBirthDay() + 
+", Personal Record: " + m6.getPersonalRecord() +
+", Year of Record: " + m6.getRecordYear());
   }
 }

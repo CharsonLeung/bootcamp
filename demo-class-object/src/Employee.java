@@ -54,7 +54,14 @@ public class Employee { // An employee has name, age and email
     System.out.println("Name: " + e2.getName() + ", Age: " + e2.getAge() + ", E-mail:" + e2.getEmail());
 
     // when e1 = e2: original e1 would be deleted since no path to reach
-    //e1 = e2;
+    // e1 = e2;
     System.out.println(e1.getName());
+
+    e1.setEmail("john@gmail.com");
+    System.out.println(e1.getName());
+    System.out.println(e1.getEmail());
+
+
   }  
+
 }
