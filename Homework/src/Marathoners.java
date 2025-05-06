@@ -162,26 +162,27 @@ public class Marathoners {
   m7.setAllInput("Wong Wan Chun", 'M', "Hong Kong", LocalDate.of(1996, 2, 13), 2, 15, 26, 2024);
 
 
-  // String q = m1;
-System.out.println("Name: " + m4.getName());
-System.out.println("Gender: " + m4.getGender());
-System.out.println("Country: " + m4.getCountry()); 
-System.out.println("Date of Birth: " + m4.getBirthDay()); 
-System.out.println("Personal Record: " + m4.getPersonalRecord());
-System.out.println("Average pacing: " + m4.getRecordPacing());
-System.out.println("Year of Record: " + m4.getRecordYear());
-System.out.println("Age when Record made: " + m4.getRecordAge());
+int q = 2;
+System.out.println("Name: " + runner[q].getName());
+System.out.println("Gender: " + runner[q].getGender());
+System.out.println("Country: " + runner[q].getCountry()); 
+System.out.println("Date of Birth: " + runner[q].getBirthDay()); 
+System.out.println("Personal Record: " + runner[q].getPersonalRecord());
+System.out.println("Average pacing: " + runner[q].getRecordPacing());
+System.out.println("Year of Record: " + runner[q].getRecordYear());
+System.out.println("Age when Record made: " + runner[q].getRecordAge());
 
-System.out.println("Name: " + m6.getName() + 
-", Gender: " + m6.getGender() +
-", Country: " + m6.getCountry() + 
-", Date of Birth: " + m6.getBirthDay() + 
-", Personal Record: " + m6.getPersonalRecord() +
-", Average Pacing: " + m6.getRecordPacing() +
-", Year of Record: " + m6.getRecordYear() +
-", Age when Record made: " + m6.getRecordAge());
+q = 3;
+System.out.println("Name: " + runner[q].getName() + 
+", Gender: " + runner[q].getGender() +
+", Country: " + runner[q].getCountry() + 
+", Date of Birth: " + runner[q].getBirthDay() + 
+", Personal Record: " + runner[q].getPersonalRecord() +
+", Average Pacing: " + runner[q].getRecordPacing() +
+", Year of Record: " + runner[q].getRecordYear() +
+", Age when Record made: " + runner[q].getRecordAge());
 
-// Print all names only
+// Print all in once.
 for (int i = 0; i < runner.length; i++) {
   System.out.println("Name: " + runner[i].getName());
   System.out.println("Gender: " + runner[i].getGender());

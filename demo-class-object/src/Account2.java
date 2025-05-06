@@ -3,13 +3,15 @@ public class Account2 {
     private String userId;
     private double balance;
 
-    public Account() {}
+    public Account2() {
+      this.balance = 10.0;
+    }
     
-    public Account(String userId, double balance) {
+    public Account2(String userId, double balance) {
       this.userId = userId;
       this.balance = balance;
     }
-    public static void main(String[] args) {
+
     // ! Can be more than 1 constructors
     // Constructor (empty constructor): nothing in the ()
     //public Account() // ! empty constructor (no parameter) when there is no constructors
@@ -23,7 +25,7 @@ public class Account2 {
     
 
     // ! write
-    public void setuserId(String userId) {
+    public void setUserId(String userId) {
       this.userId = userId;
     }
     public void setBalance(double balance) { //void: because nothing to return, so write void, but have to put into ()
@@ -32,7 +34,7 @@ public class Account2 {
   
     // ! read
   
-    public String getuserId() {
+    public String getUserId() {
       return this.userId;
     }
     public double getBalance() {
@@ -57,6 +59,5 @@ public class Account2 {
       String s2 = "Peter";
       String s3 = "Sally";
       //names[0] = 
-}
+      }
     }
-  }

@@ -38,6 +38,11 @@ public class DemoDate {
     LocalDateTime dateTime = LocalDateTime.of(2025, 11, 1, 23, 59, 59);
     System.out.println(dateTime.toString()); // 2025-11-01T23:59:59
 
+    int h = 2;
+    int m = 53;
+    int s = 44;
+    LocalDateTime time = LocalDateTime.now();
+    System.out.println(time.toString());
 
   }
   
