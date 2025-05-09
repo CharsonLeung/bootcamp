@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
 
-// ! Author of Circle 
+// ! Author of Circle -> control the access (read/write) of the object
 public class Circle {
   private double radius;
   private String color;

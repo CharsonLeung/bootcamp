@@ -23,6 +23,9 @@ public class Person {
     this.height = height;
     this.weight = weight;
   }
+  public void exercise() {
+    this.weight -= 0.1;
+  }
 
   public String getName() {
     return this.name;
@@ -40,6 +43,7 @@ public class Person {
                       .divide(BigDecimal.valueOf(Math.pow(this.height, 2)), 2, RoundingMode.HALF_UP).doubleValue();
   }
   // isOverweight -> boolean (BMI > 25)
+
   public boolean getIsOverweight() {
     if (this.BMI > 25) {
       return this.isOverweight = true;
@@ -57,36 +61,33 @@ public class Person {
   }
 
   //main
-public static void main(String[] args) {
+public static void main(String[] args) { //main: test the program
   //person[] -> p1, p2, p3
 
-  Person [] person = new Person[3];
+  Person [] persons = new Person[3];
 
 
   Person p1 = new Person();
-  person[0] = p1;
+  persons[0] = p1;
   p1.setName("Peter");
   p1.setWeight(89);
   p1.setHeight(1.75);
-  p1.getBMI();
-  p1.getIsOverweight();
 
   Person p2 = new Person();
-  person[1] = p2;
+  persons[1] = p2;
   p2.setBody("Paul", 1.53, 76);
-  p2.getBMI();
-  p2.getIsOverweight();
 
   Person p3 = new Person();
-  person[2] = p3;
+  persons[2] = p3;
   p3.setBody("Mary", 1.50, 50);
-  p3.getBMI();
-  p3.getIsOverweight();
+
   
   // for loop () -> array -> pritn out their bmi and weight status
 
-    for (Integer i = 0; i < person.length; i++) {
-      System.out.println(person[i].getAll());
+    for (Integer i = 0; i < persons.length; i++) {
+      persons[i].getBMI();
+      persons[i].getIsOverweight();
+      System.out.println(persons[i].getAll());
     }
   }
 }
