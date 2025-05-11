@@ -10,9 +10,8 @@ public class Order {
   public Order() {
     this.items = new Item[0]; //no volumne, but useful, add room in the future
       }
-  public void custOfOrder(Order order, Customer customer) {
-    this.customer = customer;
-  }
+
+
   
   public void add(Item newItem) {
     Item[] newItems = new Item[this.items.length + 1];

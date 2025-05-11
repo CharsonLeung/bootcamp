@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Looptest {
   public static void main(String[] args) {
     // 1/1 + 1/(1*2) + 1/(2*3) + 1/(2*3*4) + 1/(2*3*4*5) + ...
@@ -33,7 +35,7 @@ public class Looptest {
     // 1 + (1 * 2) + (1 * 2 * 3) + (1 * 2 * 3* 4) + ...
     long m = 1;
     long m1 = 0;
-    int fact = 7; // change this value for result
+    int fact = 8; // change this value for result
     for (i = 0; i <= fact - 1 ; i++) {
       m = m * (i + 1);
       m1 = m1 + m;
@@ -63,7 +65,7 @@ public class Looptest {
   System.out.println(m1);
   System.out.println(e);
   System.out.println("=================================");
-  int a = 6; // a ^ ap
+  int a = 8; // a ^ ap
   int ap = 8;
   int b = a;
   for (i = 0; i < ap - 1; i++) {

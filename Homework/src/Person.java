@@ -68,24 +68,26 @@ public static void main(String[] args) {
   p1.setName("Peter");
   p1.setWeight(89);
   p1.setHeight(1.75);
-  p1.getBMI();
-  p1.getIsOverweight();
+  //p1.getBMI();
+  //p1.getIsOverweight();
 
   Person p2 = new Person();
   person[1] = p2;
   p2.setBody("Paul", 1.53, 76);
-  p2.getBMI();
-  p2.getIsOverweight();
+  //p2.getBMI();
+  //p2.getIsOverweight();
 
   Person p3 = new Person();
   person[2] = p3;
   p3.setBody("Mary", 1.50, 50);
-  p3.getBMI();
-  p3.getIsOverweight();
+  //p3.getBMI();
+  //p3.getIsOverweight();
   
   // for loop () -> array -> pritn out their bmi and weight status
 
     for (Integer i = 0; i < person.length; i++) {
+      person[i].getBMI();
+      person[i].getIsOverweight();
       System.out.println(person[i].getAll());
     }
   }
