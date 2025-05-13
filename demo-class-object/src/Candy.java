@@ -59,32 +59,22 @@ Student [] candyReceiver = new Student[Student.scountLimit];
     
   
     // Every Student has his own candies
-    int n = 1;
+    
     for (int i = 0; i < candy.length; i++) {
       if (i < 3) {
         candyReceiver[i].stuReceives(candy[i]);
         System.out.println(candyReceiver[i].name + " receives " + candy[i].color +" "+ candy[i].number);
-      } else if (i >= 3 && i < 6) {
-        candyReceiver[i % 3].stuReceives(candy[i]);
-        System.out.println(candyReceiver[i % 3].name + " receives " + candy[i].color +" "+ candy[i].number);
-      } else if (i >= 6 && i < 9) {
-        candyReceiver[i % 6].stuReceives(candy[i]);
-        System.out.println(candyReceiver[i % 6].name + " receives " + candy[i].color +" "+ candy[i].number);
-      } else if (i >= 9 && i < 12) {
-        candyReceiver[i % 9].stuReceives(candy[i]);
-        System.out.println(candyReceiver[i % 9].name + " receives " + candy[i].color +" "+ candy[i].number);
-      } else if (i >= 12 && i < 15) {
-        candyReceiver[i % 12].stuReceives(candy[i]);
-        System.out.println(candyReceiver[i % 12].name + " receives " + candy[i].color +" "+ candy[i].number);
-      } else if (i >= 15 && i < 18) {
-        candyReceiver[i % 15].stuReceives(candy[i]);
-        System.out.println(candyReceiver[i % 15].name + " receives " + candy[i].color +" "+ candy[i].number);
-      } else if (i >= 18 && i < 21) {
-        candyReceiver[i % 18].stuReceives(candy[i]);
-        System.out.println(candyReceiver[i % 18].name + " receives " + candy[i].color +" "+ candy[i].number);
-      }
+      } else if (i >= 3) {
+        for (int n = 1; n <= candy.length / 3; n++) {
+          if (i >= 3 * n && i < 3 * (n + 1)) {
+        candyReceiver[i % (3 * n)].stuReceives(candy[i]);
+        System.out.println(candyReceiver[i % (3 * n)].name + " receives " + candy[i].color + " " + candy[i].number);
+        
       
-          }
+          } 
+        }
+      }
+    }
        for (int i = 0; i < candyReceiver.length; i++) {
          System.out.println(candyReceiver[i].name + " has received " + candyReceiver[i].gotCandy() + " candys. ");
          // System.out.println(candyReceiver[i].name + candy[i].color + candy[i].number);
@@ -101,9 +91,10 @@ Student [] candyReceiver = new Student[Student.scountLimit];
     // who owns the attribute, who has the resonsibility to modify.
 
 
-  }
+  
     // warrior.attack(archer)
     // public void attack(Archer archer) {
     //    archer.deductHP(10)
     // }
+} 
 }

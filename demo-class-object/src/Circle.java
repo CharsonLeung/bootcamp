@@ -35,6 +35,12 @@ public class Circle {
     .multiply(BigDecimal.valueOf(Math.PI)))
     .doubleValue();
   }
+  public static double calArea(double radius2) { // first refer to local value
+    return BigDecimal.valueOf(radius2)
+    .multiply(BigDecimal.valueOf(radius2)
+    .multiply(BigDecimal.valueOf(Math.PI)))
+    .doubleValue();
+  }
 
   // What is the implication of "No setters"?
   // 1. We cannot modify the data of object after day1 creation.
@@ -73,6 +79,7 @@ public class Circle {
     circles2[2] = new Circle(1.9, "PINK");
     System.out.println(circles2[0].getColor()); //BLACK
 
+    System.out.println(calArea(3.5)); // 38.4845
 
 
 

@@ -26,6 +26,7 @@ public class Child {
     this.firstName = firstName;
     this.lastName = lastName;
   }
+  public 
   // getter
   public long getId() {
     return this.id;
@@ -45,11 +46,12 @@ public class Child {
     return this.id == child.getId();
   }
   public static void main(String[] args) {
-    // approach 1
+    // Approach 1
     Child c1 = new Child("Leo", "Chan");
     if (c1.getFirstName().equals("Leo") && c1.getLastName().equals("Chan")) {
       System.out.println("He is Leo Chan.");
     }
+    // Approach 2
     System.out.println(c1.equals(new Child("Vincent", "Chan"))); // true
     System.out.println(c1.equals(new Child("Vincent", "Lau")));
     System.out.println(c1.equals(new Child("Leo", "Chan")));
@@ -60,6 +62,12 @@ public class Child {
     System.out.println(c2.equals(new Child("Leo", "Wong"))); // new Child -> counter++
     System.out.println(c2.firstName.equals("Leo") && c2.lastName.equals("Wong"));
     System.out.println(c2.getId());
+
+    Child c3 = new Child("Leo", "Wong");
+    System.out.println(c2.equals(new Child(6))); // true
+    System.out.println(c2.getFirstName().equals("Leo")); // true
+    System.out.println(c2.getLastName().equals("Wong")); // true
+
   }
   
 }
