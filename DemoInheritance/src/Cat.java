@@ -7,6 +7,9 @@ public class Cat extends Animal {
   // private int age;
   private String name;
   
+  public Cat(int age) {
+    super(age);
+  }
   public Cat(String name, int age) {
     super(age);
     this.name = name;

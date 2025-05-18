@@ -15,6 +15,39 @@ public class Card {
   public char getSuit() {
     return this.suit;
   }
+  public char compareRank() {
+    if (this.rank > 2 && this.rank <= 9) {
+      return this.rank; 
+      } else if (this.rank == 'T') {
+        return this.rank = 'T';
+      } else if (this.rank == 'J' || this.rank == 'U') {
+        return this.rank = 'U';
+      } else if (this.rank == 'Q' || this.rank == 'V') {
+        return this.rank = 'V';
+      } else if (this.rank == 'K' || this.rank == 'W') {
+        return this.rank = 'W';
+      } else if (this.rank == 'A' || this.rank == 'X') {
+       return this.rank = 'X'; 
+      } else if (this.rank == '2' || this.rank == 'Y') {
+        return this.rank = 'Y';
+      } else {return this.rank;}
+    }
+
+    // Spade > Heart > Club > Diamond
+    public boolean compareSuit(Card card) {
+      if (this.suit == 'S') {
+        return true;
+    } else if (this.suit == 'H' && card.getSuit() != 'S') {
+        return true;
+    } else if (this.suit == 'C' && (card.getSuit() != 'H' && card.getSuit() != 'S')) {
+        return true;
+    } else if (this.suit == 'D' && (card.getSuit() != 'C' && (card.getSuit() != 'H' && card.getSuit() != 'S'))) {
+      if (this.compareRank() > card.compareRank()) {
+        return true;
+    } else {return false;}
+  } else {return false;} 
+}
+  
 // ! Override false -> true
     @Override
   public boolean equals(Object obj) {
@@ -39,23 +72,24 @@ public class Card {
             + " suit: " + this.suit
             + ")";
     }
-
-    // ACE Diamond vs King Diamond  -> 1
-    // King Diamond vs ACE Diamond -> -1
-    public Card compareTo(Card card) {
-      s
-      // rank
-      if (this.rank > card.getRank()) {
-        // Spade > Heart > Club > Diamond
-        if ()
-      }
-    }
-  
   // ! Rewrite the definition of Card
   // ! false -> true
   public boolean equals(Card card) {
     return this.rank == card.getRank() && this.suit == card.getSuit();
   }
+
+  
+    // ACE Diamond vs King Diamond  -> 1
+    // King Diamond vs ACE Diamond -> -1
+    public int compareTo(Card card) {
+      // rank
+      if (this.compareRank() > card.compareRank()) {
+        return 1;
+        } else if ((this.compareSuit(card) == true) && (this.compareRank() > card.compareRank())) {
+          return 1;
+        } else {return -1;}
+      }
+
   public static void main(String[] args) {
     // ACE Spade
     Card c1 = new Card('A', 'S');
@@ -92,14 +126,16 @@ public class Card {
       Integer x = 10;
       System.out.println(x.equals(10)); // true
       System.out.println(x.compareTo(5)); // 1
- 
-      
-      Card c4 = new Card('5', 'C');
-      Card c5 = new Card('5', 'C');
-      Card c6 = new Card('5', 'C');
-      Card c7 = new Card('5', 'C');
-      System.out.println(c4.equals(c5));
 
+       // ACE Diamond vs King Diamond  -> 1
+       // King Diamond vs ACE Diamond -> -1
+      Card c4 = new Card('A', 'D');
+      Card c5 = new Card('K', 'D');
+      System.out.println(c4.toString());
+      System.out.println(c5.toString());
+      System.out.println(c4.compareTo(c5));
+      System.out.println(c5.compareTo(c4));
+      
     }
 
 

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.Objects;
 
 // ! Author of Circle -> control the access (read/write) of the object
 public class Circle {
@@ -49,6 +50,11 @@ public class Circle {
     return this.radius * 2;
   }
 
+  // equals(), hashCode(), toString()
+  
+
+  // when you think it is false : not enough attributes. e.g. position
+
   public static void main(String[] args) {
     Circle c1 = new Circle(3.5, "RED");
     c1.setRadius(3.5);
@@ -80,8 +86,29 @@ public class Circle {
     System.out.println(circles2[0].getColor()); //BLACK
 
     System.out.println(calArea(3.5)); // 38.4845
+    
+    Object o1 = new Object();
+    Object o2 = new Object();
+    Object o3 = o1;
+    // Object.class has equals(), hashCode(), toString()
+    // ! 1. equals()
+    System.out.println(o1.equals(o2)); // false
+    System.out.println(o1.equals(o3)); // true
+    // ! 2. hashCode()
+    System.out.println(o1.hashCode());
+    System.out.println(o2.hashCode());
+    System.out.println(o3.hashCode());
+    // ! 3. toString()
+    System.out.println(o1.toString());
+    System.out.println(o2.toString());
+    System.out.println(o3.toString());
+    
+    
+    System.out.println(c1.toString());
+    System.out.println(c1.hashCode());
+    System.out.println(c1.equals(c2));
 
-
-
+    Circle c3 = new Circle(3.5, "RED");
+    System.out.println(c1.equals(c3));
   }
 }

@@ -31,6 +31,10 @@ public class Child {
   public long getId() {
     return this.id;
   }
+  // ! Encapsulation (封裝)
+  public String fullName() {
+    return this.firstName + " " + this.lastName;
+  }
   public String getFirstName() {
     return this.firstName;
   }

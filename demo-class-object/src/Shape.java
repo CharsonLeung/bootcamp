@@ -5,8 +5,8 @@ public class Shape {
   private String color; // attribute (usually we have setter, because it is not final)
   // final -> finalized
 
-  public Shape() {
-
+  public Shape(String color) {
+    this.color = color;
   }
   public String getName() {
     return this.name;

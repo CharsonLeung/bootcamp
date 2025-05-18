@@ -3,8 +3,8 @@ public class DemoInheritance {
     //APIE
     // A = Abstraction
     // P = Polymorphism
-    // I = Inheritance
-    // E = Encapsulation
+    // I = Inheritance (Parent Class: Concrete / Abstract)
+    // E = Encapsulation (封裝)
   }
   
 }

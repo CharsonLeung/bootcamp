@@ -21,6 +21,9 @@ public class Planet {
   public void setMoonQty(int moonQty) {
     this.moonQty = moonQty;
   }
+  public Planet(int moonQty) {
+    this.moonQty = moonQty;
+  }
   public String getName() {
     return this.name;
   }
@@ -45,6 +48,7 @@ public class Planet {
     Saturn p6 = new Saturn(274, 29.4475);
     //p6.setMoonQty(274);
     System.out.println(p6.getMoonQty());
+    System.out.println(p6.getYearLong());
   }
   
 }
