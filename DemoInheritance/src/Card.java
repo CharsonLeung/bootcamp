@@ -4,6 +4,7 @@ public class Card {
   private char rank; // A,2,3,4,5,6,7,8,9,T,J,Q,K (T = TEN)
   private char suit; // D,C,H,S
   
+
   public Card(char rank, char suit) {
     this.rank = rank;
     this.suit = suit;
@@ -47,7 +48,6 @@ public class Card {
     } else {return false;}
   } else {return false;} 
 }
-  
 // ! Override false -> true
     @Override
   public boolean equals(Object obj) {
@@ -129,8 +129,8 @@ public class Card {
 
        // ACE Diamond vs King Diamond  -> 1
        // King Diamond vs ACE Diamond -> -1
-      Card c4 = new Card('A', 'D');
-      Card c5 = new Card('K', 'D');
+      Card c4 = new Card('A', 'S');
+      Card c5 = new Card('K', 'S');
       System.out.println(c4.toString());
       System.out.println(c5.toString());
       System.out.println(c4.compareTo(c5));

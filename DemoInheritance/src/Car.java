@@ -1,11 +1,13 @@
 public class Car extends Machine {
+  private Color color;
   private String maker;
   
   public void setMaker(String maker) {
     this.maker = maker;
   }
-  public Car(String maker, int passQty) {
+  public Car(Color color, String maker, int passQty) {
     super(passQty);
+    this.color = color;
     this.maker = maker;
   }
   
@@ -14,6 +16,7 @@ public class Car extends Machine {
   }
   
   public void main(String[] args) {
-   Car car1 = new Car("BMW", 5);
+   Car car1 = new Car(Color.RED, "BMW", 5);
+   Car car2 = new Car(Color.RED, "BMW", 5);
   }
 }
