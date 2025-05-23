@@ -3,6 +3,7 @@ public class Superman extends Human implements Flyable, Living {
   public Superman(String name) {
     super(name);
   }
+  
   @Override
   public void fly() {
     System.out.println("I am flying ...");
@@ -25,6 +26,12 @@ public class Superman extends Human implements Flyable, Living {
   public void speak() {
     System.out.println("Superman is speaking...");
   }
+  @Override
+  public void born() {
+    Superman superB = new Superman("Superbaby");
+    System.out.println("Superbaby is born.");
+    superB.eat();
+  }
   public static void main(String[] args) {
     Superman s1 = new Superman("Kant");
     s1.fly();
@@ -45,5 +52,7 @@ public class Superman extends Human implements Flyable, Living {
     s3.drink();
     // s3.fly(); Living points to s3 but not Flying, therefore can't fly
     // s3.walk();
+    s3.born();
+    s3 = (Superman) s3;
   }
 }

@@ -4,4 +4,5 @@ public interface Living {
 
   void drink();
   
+  void born();
 }

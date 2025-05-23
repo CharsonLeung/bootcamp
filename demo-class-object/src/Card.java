@@ -43,7 +43,7 @@ public class Card {
     // ACE Diamond vs King Diamond  -> 1
     // King Diamond vs ACE Diamond -> -1
     public Card compareTo(Card card) {
-      s
+      
       // rank
       if (this.rank > card.getRank()) {
         // Spade > Heart > Club > Diamond
