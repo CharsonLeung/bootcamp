@@ -92,5 +92,7 @@ public class DemoArrayList {
   System.out.println(dogs.toString());
   System.out.println(dogs.get(2));
   System.out.println(dogs.indexOf(new Dog("Bob")));
+  
+  dogs.addFirst(null);
    }
 }

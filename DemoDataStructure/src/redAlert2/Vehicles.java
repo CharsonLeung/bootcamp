@@ -10,6 +10,7 @@ public enum Vehicles {
   Miner("Miner", "WarMiner", 1400),
   Apoc("Apoc", "ApocalypseTank", 1750),
   MCV("MCV", "MovableConVeh", 3000),
+  Kirov("Kirov", "KirovAirship", 2000),
 
   ;
   
@@ -25,6 +26,9 @@ public enum Vehicles {
   public String getName() {
     return this.abbName;
   }
+  public String getLongName() {
+    return this.longName;
+  }
   public int getPrice() {
     return this.price;
   }
@@ -33,6 +37,20 @@ public enum Vehicles {
     String s1 = "Rhino";
     System.out.println(Rhino.getPrice());
     System.out.println(Apoc.longName);
-
+    Vehicles [] vehiclesArr = new Vehicles[]
+  { Rhino,
+  Flak,
+  Demolit,
+  Spider,
+  V3,
+  Tesla,
+  Miner,
+  Apoc,
+  MCV,
+  Kirov, 
+    };
+    for (int i = 0; i < vehiclesArr.length; i++) {
+    System.out.println(vehiclesArr[i].longName);
+    }
   }
 }
