@@ -1,5 +1,7 @@
 package redAlert2;
 
+import java.util.HashMap;
+
 public enum Vehicles {
   Rhino("Rhino", "RhinoTank", 900),
   Flak("Flak", "FlakTrack", 500),
@@ -38,19 +40,27 @@ public enum Vehicles {
     System.out.println(Rhino.getPrice());
     System.out.println(Apoc.longName);
     Vehicles [] vehiclesArr = new Vehicles[]
-  { Rhino,
-  Flak,
-  Demolit,
-  Spider,
-  V3,
-  Tesla,
-  Miner,
-  Apoc,
-  MCV,
-  Kirov, 
-    };
+  { Vehicles.Rhino,
+  Vehicles.Flak,
+  Vehicles.Demolit,
+  Vehicles.Spider,
+  Vehicles.V3,
+  Vehicles.Tesla,
+  Vehicles.Miner,
+  Vehicles.Apoc,
+  Vehicles.MCV,
+  Vehicles.Kirov };
+    //for (Vehicles vehicle : vehiclesArr) {
+      //System.out.println(vehicle.longName);
+    // }
+    HashMap<Integer, Vehicles> vehiclesMap = new HashMap<>();
+    HashMap<Integer, String> vehiclesMapLong = new HashMap<>();
     for (int i = 0; i < vehiclesArr.length; i++) {
-    System.out.println(vehiclesArr[i].longName);
+    vehiclesMap.put(i, vehiclesArr[i]);
+    vehiclesMapLong.put(i, vehiclesArr[i].longName);
     }
+    
+    System.out.println(vehiclesMapLong);
+    System.out.println(vehiclesMap.get(0).price);
   }
 }

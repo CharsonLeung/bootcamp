@@ -6,6 +6,7 @@ public enum Infantry {
   FlakTrooper("Flak", 300),
   Engineer("Engineer", 500),
   TeslaTrooper("Tesla", 500),
+  Yuri("Yuri", 1500),
   ;
   private String infName;
   private int value;
@@ -21,14 +22,11 @@ public enum Infantry {
   public int getValue() {
     return this.value;
   }
+  public static int getValue1(Infantry Infantry) {
+    return Infantry.value;
+  }
 
   public static void main(String[] args) {
-    Infantry [] infantryArr = new Infantry [] 
-  {Conscript,
-  AttackDog,
-  FlakTrooper,
-  Engineer,
-  TeslaTrooper
-  };
+    System.out.println(getValue1(AttackDog));
   }
 }

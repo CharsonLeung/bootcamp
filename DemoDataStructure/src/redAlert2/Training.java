@@ -1,6 +1,7 @@
 package redAlert2;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Training {
@@ -9,6 +10,12 @@ public class Training {
   private static ArrayList<Infantry> soldier = new ArrayList<Infantry>();
   private static ArrayList<Vehicles> unit = new ArrayList<Vehicles>();
   
+  public static String reportInf() {
+    return " You have infantries: " + soldier.size() + " " + soldier;
+  }
+  public static String reportVeh() {
+    return " You have vehicles: " + unit.size() + " " + unit;
+  }
   public static String trainInv(Infantry infName) {
     if (fund >= infName.getValue()) {
       soldier.add(infName);
@@ -39,18 +46,26 @@ public class Training {
   }
   public static String stealCash() {
     fund = fund + 10000;
-    return "You have " + fund;
+    return "Building infilterated, cash stolen. You have " + fund;
   }
   public static String reCycle(Vehicles abbName) {
     if (unit.contains(abbName)) {
     unit.remove(abbName);
     fund = fund + abbName.getPrice();
-    return "You have " + fund;
+    return "Unit sold. You have " + fund + reportVeh();
   } else {
     return "You have no " + abbName + " to be recycled.";
     }
   }
-  
+    public static String reCycleInf(Infantry Infantry) {
+    if (soldier.contains(Infantry)) {
+      soldier.remove(Infantry);
+      fund = fund + Infantry.getValue();
+      return "Unit sold. You have " + fund + reportInf();
+    } else {
+      return "You have no " + Infantry + " to be recycled.";
+    }
+  }
 
   public static void main(String[] args) {
     for (int i = 0; i < 5; i++) {
@@ -95,31 +110,126 @@ public class Training {
       }
     EVA = stealCash();
     System.out.println(EVA);
-    System.out.println("1. Infantry, 2. Vehicles");
+    
+    System.out.println("****Establishing battlefield control, Standy By!****");
+    while (fund >= 0) {
+    System.out.println("Select what you want to do:");
+    System.out.println("1. Infantry, 2. Vehicles, 3. Recycle units, 4. Get fund, 5. Abort.");
+
+    EVA = "";
     Scanner scanner = new Scanner(System.in);
     int input = scanner.nextInt();
-
-    if (input == 1) {
-      System.out.println(Infantry.Conscript.getName() + " " +
-      Infantry.AttackDog.getName() + " " +
-      Infantry.Engineer.getName() + " " +
-      Infantry.FlakTrooper.getName() + " " +
-      Infantry.TeslaTrooper.getName());
-    } else if (input == 2) {
-      System.out.println(Vehicles.Rhino.getLongName() + " " +
-      Vehicles.Miner.getLongName() + " " +
-      Vehicles.Flak.getLongName() + " " +
-      Vehicles.Spider.getLongName() + " " +
-      Vehicles.Demolit.getLongName() + " " +
-      Vehicles.Tesla.getLongName() + " " +
-      Vehicles.MCV.getLongName() + " " +
-      Vehicles.V3.getLongName() + " " +
-      Vehicles.Apoc.getLongName() + " " +
-      Vehicles.Kirov.getLongName());
+                Infantry [] infantryArr = new Infantry[]
+      { 
+      Infantry.Conscript,
+      Infantry.AttackDog,
+      Infantry.Engineer,
+      Infantry.FlakTrooper,
+      Infantry.TeslaTrooper,
+      Infantry.Yuri 
+      };
+      HashMap<Integer, Infantry> infantryMap = new HashMap<>();
+      for (int i = 0; i < infantryArr.length; i++) {
+        infantryMap.put(i, infantryArr[i]);
+      }
+      Vehicles [] vehiclesArr = new Vehicles[]
+      { 
+      Vehicles.Rhino,
+      Vehicles.Flak,
+      Vehicles.Demolit,
+      Vehicles.Spider,
+      Vehicles.V3,
+      Vehicles.Tesla,
+      Vehicles.Miner,
+      Vehicles.Apoc,
+      Vehicles.MCV,
+      Vehicles.Kirov,
+    };
+    //for (Vehicles vehicle : vehiclesArr) {
+      //System.out.println(vehicle.longName);
+    // }
+    HashMap<Integer, Vehicles> vehiclesMap = new HashMap<>();
+    HashMap<Integer, String> vehiclesMapLong = new HashMap<>();
+    for (int i = 0; i < vehiclesArr.length; i++) {
+    vehiclesMap.put(i, vehiclesArr[i]);
+    vehiclesMapLong.put(i, vehiclesArr[i].longName);
     }
-    System.out.println(soldier.get(2));
-    System.out.println(unit.get(1));
+    
+    if (input == 1) {
+      for (int i = 0; i < infantryArr.length; i++) {
+        System.out.println(infantryArr[i] + " : " + infantryArr[i].getValue());
+      }
+      System.out.println(infantryMap);
+      input = scanner.nextInt();
+      Infantry input1 = infantryMap.get(input);
+      EVA = trainInv(input1);
+      System.out.println(EVA);
+      System.out.println(reportInf());
+
+    } else if (input == 2) {
+      for (int i = 0; i < vehiclesArr.length; i++) {
+        System.out.println(vehiclesArr[i].longName + " : " + vehiclesArr[i].price);
+      }
+      System.out.println(vehiclesMapLong);
+      input = scanner.nextInt();
+      Vehicles input2 = vehiclesMap.get(input);
+      EVA = buildTank(input2);
+      System.out.println(EVA);
+      if (input2 == Vehicles.Demolit && fund >= Vehicles.Demolit.price) {
+        System.out.println("My truck is loaded!");
+      } else if (input2 == Vehicles.Kirov && fund >= Vehicles.Kirov.price) {
+        System.out.println("Kirov Reporting!");
+      }
+      System.out.println(reportVeh());
+    }  else if (input == 3) {
+          System.out.println("To recycle 1. Infantries, 2. Vehicles, 3. All units ? ");
+          int inputR = scanner.nextInt();
+              if (inputR == 1) {
+          System.out.println(reportInf());
+          System.out.println(infantryMap);
+          int inputGrind = scanner.nextInt();
+              if (soldier.contains(infantryMap.get(inputGrind))) {
+              EVA = reCycleInf(infantryMap.get(inputGrind));
+              } else {
+                System.out.println("You have no such unit to recycle.");
+              } } else if (inputR == 2) {
+          System.out.println(reportVeh());
+          System.out.println(vehiclesMap);
+          int inputGrind = scanner.nextInt();
+              if (unit.contains(vehiclesMap.get(inputGrind))) {
+              EVA = reCycle(vehiclesMap.get(inputGrind));
+              } else {
+            System.out.println("You have no such unit to recycle.");
+          }
+          } else if (inputR == 3) {
+             for (int i = 0; i < soldier.size(); i++) {
+              fund = fund + soldier.get(i).getValue(); }
+             for (int i = 0; i < unit.size(); i++) {
+              fund = fund + unit.get(i).getPrice();
+             }
+             soldier.removeAll(soldier);
+             unit.removeAll(unit);
+             System.out.println(reportInf());
+             System.out.println(reportVeh());
+             System.out.println("You have " + fund);
+          }  System.out.println(EVA);
+        } else if (input == 4) {
+          System.out.println("Which way would you want to get fund?");
+          System.out.println("1. Mining, 2. Steal from enemy");
+          int inputC = scanner.nextInt();
+          if (inputC == 1) {
+            EVA = getMine();
+          } else if (inputC == 2) {
+            EVA = stealCash();
+          } System.out.println(EVA); 
+        } else if (input == 5) {
+           System.out.println("****Remote control terminated.****");
+           System.out.println("Fund: " + fund);
+           System.out.println(reportVeh());
+           System.out.println(reportInf());
+           break;
+      }
 
   }
-  
+ }
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class DemoForeachLoop {
   public static void main(String[] args) {
     int[] arr = new int[] {3, 99, 10, 98, -1};
