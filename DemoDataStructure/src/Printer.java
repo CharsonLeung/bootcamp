@@ -3,6 +3,9 @@
 // ! 2. You still need to define the T type dyring runtime
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 // E -> Java for Collection.class (Element)
 // K, V -> Java for Map (Key, Value)
@@ -21,6 +24,12 @@ public class Printer<T> {
     this.value = value;
   }
 
+  public T getValue() {
+    return this.value;
+  }
+
+  
+
   public static void main(String[] args) {
     // Runtime: StringPrinter
     Printer<String> sp = new Printer<>("Hello");
@@ -35,6 +44,25 @@ public class Printer<T> {
     names.add("Peter");
     // names.add(10);
     
+    
+    HashMap<String, List<Dog>> dogMap = new HashMap<>();
+    List<Dog> dogList1 = new LinkedList<>();
+    dogList1.add(new Dog("John"));
+    dogList1.add(new Dog("Peter"));
+    dogMap.put("ABC", dogList1);
+    List<Dog> dogList2 = new LinkedList<>();
+    dogList2.add(new Dog("Lucas"));
+    dogList2.add(new Dog("Oscar"));
+    dogMap.put("XYZ", dogList2);
+    System.out.println(dogMap.get("XYZ"));
+
+    
+
+    //
+    Printer<List<Dog>> dogListPrinter = new Printer<>(new LinkedList<>());
+    dogListPrinter.getValue().add(new Dog("John"));
+    dogListPrinter.getValue().add(new Dog("Peter"));
+    dogListPrinter.print();
   }
   
 }

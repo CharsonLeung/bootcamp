@@ -1,4 +1,8 @@
-public class Dog {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Dog extends Animal implements Comparable<Dog> {
   private String name;
 
   public Dog(String name) {
@@ -6,6 +10,11 @@ public class Dog {
   }
   public String getName() {
     return this.name;
+  }
+  // this (-1) vs dog (1)
+  @Override
+  public int compareTo(Dog dog) {
+    return this.name.compareTo(dog.getName()) > 0 ? -1 : 1;
   }
   // ! You should override equal(),
   // ! so that list.remove() able to remove this same dog (your definition)
@@ -20,7 +29,19 @@ public class Dog {
   }
 @Override
 public String toString() {
-  return this.name;
+  return "Dog(" + "names: " + this.name
+                + ")"; 
 }
-  
+  public static void main(String[] args) {
+    List<Dog> dogs = new ArrayList<>();
+    dogs.add(new Dog("Mary"));
+    dogs.add(new Dog("Alex"));
+    dogs.add(new Dog("Paul"));
+    
+
+    // Comparable Approach: as long as Dog implement comparable
+    // Disadvantage: every class has one sorting formula ONLYm but Comparator approach can be more formula for a runtime
+    Collections.sort(dogs); // where is the formula?
+    System.out.println(dogs);
+  }
 }

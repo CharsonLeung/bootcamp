@@ -31,7 +31,7 @@ public class DemoHashSet {
     fruits.add("orange");
     fruits.add("apple");
     fruits.add("lemon"); 
-    
+    System.out.println(fruits);
     // loop + hashset + add()
     boolean foundDuplicated = false;
     HashSet<String> fruitSet = new HashSet<>();

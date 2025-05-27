@@ -7,6 +7,7 @@ public enum Infantry {
   Engineer("Engineer", 500),
   TeslaTrooper("Tesla", 500),
   Yuri("Yuri", 1500),
+  Spy("Spy", 1000),
   ;
   private String infName;
   private int value;

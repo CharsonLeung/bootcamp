@@ -2,24 +2,20 @@ package redAlert2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Training {
   private static Integer fund = 10000;
+  private static Integer counter = 0;
   private Vehicles abbName;
   private static ArrayList<Infantry> soldier = new ArrayList<Infantry>();
   private static ArrayList<Vehicles> unit = new ArrayList<Vehicles>();
   
-  public static String reportInf() {
-    return " You have infantries: " + soldier.size() + " " + soldier;
-  }
-  public static String reportVeh() {
-    return " You have vehicles: " + unit.size() + " " + unit;
-  }
   public static String trainInv(Infantry infName) {
     if (fund >= infName.getValue()) {
       soldier.add(infName);
-      fund = fund - infName.getValue();
+      fund -= infName.getValue();
       return "Training ... Unit ready. You have " + fund;
     } else {
       return "Insufficient fund.";
@@ -28,9 +24,9 @@ public class Training {
 
   public static String buildTank(Vehicles abbName) {
     //this.abbName = abbName;
-    if (fund > abbName.getPrice()) {
+    if (fund >= abbName.getPrice()) {
     unit.add(abbName);
-    fund = fund - abbName.getPrice();
+    fund -= abbName.getPrice();
      return "Building ... Unit Ready. You have " + fund;
     } else {
       return "Insufficient fund.";
@@ -40,18 +36,50 @@ public class Training {
   }
 
 
+  public static int vehCounter(Vehicles vehicle) {
+    counter = 0;
+    for (int i = 0; i < unit.size(); i++) {
+      if (unit.get(i) == vehicle) {
+        counter++;
+        } 
+    } return counter; 
+  }
+  public static int infCounter(Infantry infantry) {
+    counter = 0;
+    for (int i = 0; i < soldier.size(); i++) {
+      if (soldier.get(i) == infantry) {
+        counter++;
+      }
+    } return counter;
+    }
+
+  public static String reportInf() {
+    return " You have infantries: " + soldier.size() + " " + soldier;
+  }
+  public static String reportVeh() {
+    return " You have vehicles: " + unit.size() + " " + unit;
+  }
   public static String getMine() {
-    fund = fund + 1000;
+    if (!unit.contains(Vehicles.Miner)) {
+      return "You have no miners.";
+    } else {
+    fund += 1000 * vehCounter(Vehicles.Miner);
     return "You have " + fund;
+    }
   }
   public static String stealCash() {
-    fund = fund + 10000;
+    if (!soldier.contains(Infantry.Spy)) {
+      return "You have to train Spy first.";
+    } else {
+    fund += 10000;
+    soldier.remove(Infantry.Spy);
     return "Building infilterated, cash stolen. You have " + fund;
   }
+}
   public static String reCycle(Vehicles abbName) {
     if (unit.contains(abbName)) {
     unit.remove(abbName);
-    fund = fund + abbName.getPrice();
+    fund += abbName.getPrice();
     return "Unit sold. You have " + fund + reportVeh();
   } else {
     return "You have no " + abbName + " to be recycled.";
@@ -60,7 +88,7 @@ public class Training {
     public static String reCycleInf(Infantry Infantry) {
     if (soldier.contains(Infantry)) {
       soldier.remove(Infantry);
-      fund = fund + Infantry.getValue();
+      fund += Infantry.getValue();
       return "Unit sold. You have " + fund + reportInf();
     } else {
       return "You have no " + Infantry + " to be recycled.";
@@ -110,11 +138,21 @@ public class Training {
       }
     EVA = stealCash();
     System.out.println(EVA);
+    System.out.println(soldier.contains(Infantry.Spy));
+    buildTank(Vehicles.Miner);
+    buildTank(Vehicles.Miner);
+    System.out.println(unit.contains(Vehicles.Miner));
+    System.out.println(vehCounter(Vehicles.Miner));
+    System.out.println(getMine());
+    // Cheating or initializing
+    fund = 10000;
+    
     
     System.out.println("****Establishing battlefield control, Standy By!****");
     while (fund >= 0) {
+    System.out.println("Fund: " + fund);
     System.out.println("Select what you want to do:");
-    System.out.println("1. Infantry, 2. Vehicles, 3. Recycle units, 4. Get fund, 5. Abort.");
+    System.out.println("1. Train Infantry, 2. Building Vehicles, 3. Recycle units, 4. Get fund, 5. Abort.");
 
     EVA = "";
     Scanner scanner = new Scanner(System.in);
@@ -126,7 +164,8 @@ public class Training {
       Infantry.Engineer,
       Infantry.FlakTrooper,
       Infantry.TeslaTrooper,
-      Infantry.Yuri 
+      Infantry.Yuri,
+      Infantry.Spy,
       };
       HashMap<Integer, Infantry> infantryMap = new HashMap<>();
       for (int i = 0; i < infantryArr.length; i++) {
@@ -183,8 +222,8 @@ public class Training {
       System.out.println(reportVeh());
     }  else if (input == 3) {
           System.out.println("To recycle 1. Infantries, 2. Vehicles, 3. All units ? ");
-          int inputR = scanner.nextInt();
-              if (inputR == 1) {
+           input = scanner.nextInt();
+              if (input == 1) {
           System.out.println(reportInf());
           System.out.println(infantryMap);
           int inputGrind = scanner.nextInt();
@@ -192,7 +231,7 @@ public class Training {
               EVA = reCycleInf(infantryMap.get(inputGrind));
               } else {
                 System.out.println("You have no such unit to recycle.");
-              } } else if (inputR == 2) {
+              } } else if (input == 2) {
           System.out.println(reportVeh());
           System.out.println(vehiclesMap);
           int inputGrind = scanner.nextInt();
@@ -201,7 +240,7 @@ public class Training {
               } else {
             System.out.println("You have no such unit to recycle.");
           }
-          } else if (inputR == 3) {
+          } else if (input == 3) {
              for (int i = 0; i < soldier.size(); i++) {
               fund = fund + soldier.get(i).getValue(); }
              for (int i = 0; i < unit.size(); i++) {
@@ -211,15 +250,15 @@ public class Training {
              unit.removeAll(unit);
              System.out.println(reportInf());
              System.out.println(reportVeh());
-             System.out.println("You have " + fund);
+             System.out.println("Units sold. You have " + fund);
           }  System.out.println(EVA);
         } else if (input == 4) {
           System.out.println("Which way would you want to get fund?");
           System.out.println("1. Mining, 2. Steal from enemy");
-          int inputC = scanner.nextInt();
-          if (inputC == 1) {
+           input = scanner.nextInt();
+          if (input == 1) {
             EVA = getMine();
-          } else if (inputC == 2) {
+          } else if (input == 2) {
             EVA = stealCash();
           } System.out.println(EVA); 
         } else if (input == 5) {
