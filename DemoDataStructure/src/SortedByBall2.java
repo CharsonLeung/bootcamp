@@ -6,20 +6,18 @@ import java.util.List;
 public class SortedByBall2 implements Comparator<Ball> {
   @Override
    public int compare(Ball b1, Ball b2) {
-    
+    if (b1.getColor() == b2.getColor()) {
+      return b1.getNumber() > b2.getNumber() ? -1 : 1;
+    }
     if (b1.getColor() == Ball.Color.YELLOW)
-     if (b1.getNumber() > b2.getNumber())
-    return -1;
+      return -1;
     if (b2.getColor() == Ball.Color.YELLOW)
-    return 1;
+      return 1;
     if (b1.getColor() == Ball.Color.RED)
-    return -1;
+      return -1;
     if (b2.getColor() == Ball.Color.RED)
-    return 1;
-    if (b1.getNumber() > b2.getNumber())
+      return 1;
     return -1;
-    
-     else {return 0;}
   } 
 
   public static void main(String[] args) {
