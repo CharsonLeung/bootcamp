@@ -17,13 +17,24 @@ public class ExceptionExercise3 {
     String input = scanner.nextLine();
     scanner.close();
     // code here for the caller...
-    // try, catch
+     // try, catch
+    try {
+      Integer converted = Integer.parseInt(input);
+      checkAge(converted);
+    } catch (InvalidAgeException e) {
+      System.out.println("Age is invalid. Please input again later.");
+    } catch (NumberFormatException n) {
+      System.out.println("Error: Please enter a valid number.");
+    }
+   
   }
 
   // code here for the method
   public static void checkAge(int age) {
     if (age < 18) {
       throw new InvalidAgeException();
+    } else {
+      System.out.println("Age " + age + " is accepted.");
     }
   }
 

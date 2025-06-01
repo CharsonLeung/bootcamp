@@ -1,3 +1,3 @@
-public class ArithmeticException {
+public class ArithmeticException extends RuntimeException{
   
 }

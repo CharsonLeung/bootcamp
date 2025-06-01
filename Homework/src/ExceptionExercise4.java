@@ -18,6 +18,7 @@ public class ExceptionExercise4 {
     
     // code here ...
     // call method registerUser(), handle the exception to print "User Registeration is Fail."
+    registerUser(username, password, email);
     // or "User Registeration is Success."
     
     // try, catch
@@ -25,6 +26,7 @@ public class ExceptionExercise4 {
 
   public static class UserRegistrationException extends RuntimeException {
     // code here ...
+
   }
 
   // Call validateUsername(), validatePassword() and validateEmail()
@@ -34,11 +36,17 @@ public class ExceptionExercise4 {
   public static void registerUser(String username, String password,
       String email) {
     // code here ...
+    ExceptionExercise4.registerUser(username, password, email);
   }
 
   // Throw IllegalArgumentException if String username is null or empty string
   private static void validateUsername(String username) {
     // code here ...
+    if (username == null || username == "" ) {
+      throw new IllegalArgumentException();
+    } else {
+       
+    }
   }
 
   // Throw IllegalArgumentException
