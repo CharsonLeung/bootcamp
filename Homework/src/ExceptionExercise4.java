@@ -18,14 +18,26 @@ public class ExceptionExercise4 {
     
     // code here ...
     // call method registerUser(), handle the exception to print "User Registeration is Fail."
-    registerUser(username, password, email);
+    try {registerUser(username, password, email);
+    } catch (UserRegistrationException e) {
+      System.out.println("User Registeration is Fail.");
+    }
+
     // or "User Registeration is Success."
     
     // try, catch
+    try {
+      registerUser(username, password, email);
+    } catch (UserRegistrationException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   public static class UserRegistrationException extends RuntimeException {
     // code here ...
+    public UserRegistrationException(String message) {
+      super(message);
+    }
 
   }
 
@@ -36,17 +48,46 @@ public class ExceptionExercise4 {
   public static void registerUser(String username, String password,
       String email) {
     // code here ...
-    ExceptionExercise4.registerUser(username, password, email);
+    //try {
+      //validateUsername(username);
+      //validatePassword(password);
+      //validateEmail(email);
+      //System.out.println("User registrated successfully" + username);
+    //} catch (IllegalArgumentException e) {
+      //throw new UserRegistrationException(e.getMessage());
+    //}
+    boolean invalidFound = false;
+    String errorMessage = "";
+
+    try {
+      validateUsername(username);
+    } catch (IllegalArgumentException e) {
+      invalidFound = true;
+      errorMessage += e.getMessage();
+    }
+    try {
+      validatePassword(password);
+    } catch (IllegalArgumentException e) {
+      invalidFound = true;
+      errorMessage += e.getMessage();
+    }
+    try {
+      validateEmail(email);
+    } catch (IllegalArgumentException e) {
+      invalidFound = true;
+      errorMessage += e.getMessage();
+    }
+    if (invalidFound) {
+      throw new UserRegistrationException(errorMessage);
+    }
   }
 
   // Throw IllegalArgumentException if String username is null or empty string
   private static void validateUsername(String username) {
     // code here ...
-    if (username == null || username == "" ) {
-      throw new IllegalArgumentException();
-    } else {
-       
-    }
+    if (username == null || username.isEmpty()) {
+      throw new IllegalArgumentException("Invalid Username. ");
+    } 
   }
 
   // Throw IllegalArgumentException
@@ -54,10 +95,19 @@ public class ExceptionExercise4 {
   // any special characters of !@$&_
   private static void validatePassword(String password) {
     // code here ...
+    if (password == null || password.length() < 8 
+        || (!password.contains("!") && !password.contains("@")
+        && !password.contains("$") && !password.contains("&")
+        && !password.contains("_"))) {
+          throw new IllegalArgumentException("Invalid password. ");
+        }
   }
 
   // Throw IllegalArgumentException if String email is null or it does not contain character @
   private static void validateEmail(String email) {
     // code here ...
+    if (email == null || !email.contains("@")) {
+      throw new IllegalArgumentException("Invalid email address. ");
+    }
   }
 }
