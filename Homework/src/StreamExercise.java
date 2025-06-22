@@ -266,17 +266,29 @@ public class StreamExercise {
     // employees by department.
 
     // Create Worker Class
-    // new Worker("Alice", "HR")
-    // new Worker("Bob", "IT")
-    // new Worker("Charlie", "HR")
-    // new Worker("David", "IT")
+    List<Worker> workers = Arrays.asList(
+      new Worker("Alice", "HR"),
+      new Worker("Bob", "IT"),
+      new Worker("Charlie", "HR"),
+      new Worker("David", "IT")
+    );
+
+    List<String> hr = workers.stream().filter(w -> w.dept() == "HR")
+          .map(w -> w.name()).collect(Collectors.toList());
+    List<String> it = workers.stream().filter(w -> w.dept() == "IT")
+          .map(w -> w.name()).collect(Collectors.toList());
+    HashMap<String, List<String>> map = new HashMap<>();
+    map.put("HR", hr);
+    map.put("IT", it);
+    System.out.println(map);
 
     // Output: {HR=[Alice, Charlie], IT=[Bob, David]}
 
     // 17. Parallel Streams
     // Task: Given a list of numbers, use a parallel stream to calculate the sum of all elements.
     List<Integer> numbers5 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-
+    int sum = numbers5.parallelStream().mapToInt(n -> n.intValue()).sum();
+    System.out.println(sum);
     // Output: 55
 
 
@@ -367,6 +379,7 @@ public class StreamExercise {
     // Create Student Class
     // new Student("Alice", 85)
     // new Student("Bob", 75)
+
 
 public static class Student {
   
@@ -463,5 +476,7 @@ public static class Employee {
     // new Product("Pen", 5)
     // new Product("Notebook", 7)
     public record Product(String name, int price) {
+    }
+    public record Worker(String name, String dept) {
     }
 }

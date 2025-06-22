@@ -20,6 +20,7 @@ public class DemoArrayList {
   Runnable task2 = () -> {
   for (int i = 0; i < 100_000; i++) {
     integers2.add(1);
+    // System.out.println(integers2.size());
   }
 };
 long before = System.currentTimeMillis();
