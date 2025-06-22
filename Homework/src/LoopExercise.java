@@ -229,9 +229,6 @@ for (int i = 0; i < 6; i++) {
     s19 = s19.replace(temp, (char)max);
     System.out.println(s19);
 
-    //System.out.println(s19.indexOf((char)max));
-    //System.out.println(s19.indexOf((char)min));
-
 
     // 20. Find the longest String in the String array
     // Print "longest=programming"

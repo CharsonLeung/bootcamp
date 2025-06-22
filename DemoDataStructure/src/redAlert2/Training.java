@@ -55,6 +55,7 @@ public class Training {
 
   public static String reportInf() {
     return " You have infantries: " + soldier.size() + " " + soldier;
+    
   }
   public static String reportVeh() {
     return " You have vehicles: " + unit.size() + " " + unit;
@@ -266,6 +267,7 @@ public class Training {
            System.out.println("Fund: " + fund);
            System.out.println(reportVeh());
            System.out.println(reportInf());
+
            break;
       }
 

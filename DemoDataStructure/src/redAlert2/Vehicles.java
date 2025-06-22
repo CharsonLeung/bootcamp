@@ -62,5 +62,8 @@ public enum Vehicles {
     
     System.out.println(vehiclesMapLong);
     System.out.println(vehiclesMap.get(0).price);
+    for (Vehicles v : vehiclesArr) {
+      System.out.println(v.longName);
+    }
   }
 }

@@ -10,7 +10,7 @@ public class Staff {
   }
   // equals() -> String, Integer, Double
 
-  public boolean equals(Staff staff) {
+  public boolean equals(Staff1 staff) {
     if (this.id == staff.getId()) {
       return true;
     }
@@ -18,19 +18,19 @@ public class Staff {
   }
 
   public static void main(String[] args) {
-    Staff s1 = new Staff(1L); // Objects
+    Staff1 s1 = new Staff1(1L); // Objects
     
     // asking if the staff Id = 1;
     if (s1.getId() == 1) {}  
   
 
-  if (s1.equals(new Staff(1L))) { 
+  if (s1.equals(new Staff1(1L))) { 
     // suppose true, but false now (if we do not rewrite equals() method)
 // ! by default, Java implicity say that equals() checking object's address
 
 // after rewriting the equals method, new Staff(1) equals new Staff(1)
 }
-System.out.println(s1.equals(new Staff(1L)));
+System.out.println(s1.equals(new Staff1(1L)));
 //String str = "hello";
   //if (str.equals("hello")) {
   //}
