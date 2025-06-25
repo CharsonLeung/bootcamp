@@ -301,6 +301,12 @@ public class StreamExercise {
         Arrays.asList(4, 5, 6), //
         Arrays.asList(7, 8, 9) //
     );
+    List<Integer> output18 = Stream.concat(Stream.concat(
+                    listOfIntegers.get(0).stream(), 
+                    listOfIntegers.get(1).stream()),
+                    listOfIntegers.get(2).stream()).filter(i -> i.intValue() > 5)
+                    .collect(Collectors.toList());
+    System.out.println(output18);
     // Output: [6, 7, 8, 9]
 
     // 19. Distinct and Sorting
@@ -309,6 +315,10 @@ public class StreamExercise {
 
     List<String> fruits =
         Arrays.asList("apple", "banana", "apple", "orange", "banana", "grape");
+        List<String> output19 = fruits.stream()
+                                      .distinct().sorted()
+                                      .collect(Collectors.toList());
+        System.out.println(output19);
     // Output: [apple, banana, grape, orange]
 
     // 20. Partitioning By
