@@ -24,6 +24,7 @@ public class SuperQueue {
       for (int i = s2.size() - 1; i >= 0; i--) {
         s1.push(s2.get(i));
       }
+      
     return s1;
     } else {
       throw new IllegalStateException("Queue is empty.");
@@ -79,16 +80,16 @@ public ArrayList<String> toArrayList2() {
     sq1.add("Alan");
     sq1.add("Bob");
     sq1.add("Candy");
+    sq1.add("Dennis");
+    sq1.add("Emily");
     System.out.println(sq1.toArrayList());
     System.out.println(sq1.toArrayList2());
     System.out.println(sq1.isEmpty());
+    int sqSize = sq1.size();
+    for (int i = 0; i < sqSize; i++) {
     System.out.println(sq1.size());
     System.out.println(sq1.poll());
-    System.out.println(sq1.size());
-    System.out.println(sq1.poll());
-    System.out.println(sq1.size());
-    System.out.println(sq1.poll());
-    System.out.println(sq1.size());
+    }
     System.out.println(sq1.isEmpty());
   }
   

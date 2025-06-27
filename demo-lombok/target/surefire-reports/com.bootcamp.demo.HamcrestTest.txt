@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.bootcamp.demo.CatTest
+Test set: com.bootcamp.demo.HamcrestTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.770 s -- in com.bootcamp.demo.CatTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in com.bootcamp.demo.HamcrestTest

@@ -1,6 +1,7 @@
 com\bootcamp\demo\Animal.class
+com\bootcamp\demo\Dog.class
 com\bootcamp\demo\Person.class
 com\bootcamp\demo\Cat.class
+com\bootcamp\demo\App.class
 com\bootcamp\demo\Staff$StaffBuilder.class
 com\bootcamp\demo\Staff.class
-com\bootcamp\demo\App.class

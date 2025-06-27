@@ -1,6 +1,7 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Deque;
@@ -8,6 +9,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -328,29 +331,50 @@ public class StreamExercise {
     // Create Student first.
 
     // Create Children Class
-    // new Children("Alice", 45)
-    // new Children("Bob", 55)
-    // new Children("Charlie", 40)
-    // new Children("David", 70)
-
+    List<Children> children = Arrays.asList(
+    new Children("Alice", 45),
+    new Children("Bob", 55),
+    new Children("Charlie", 40),
+    new Children("David", 70));
+    List<String> passed = children.stream()
+                          .filter(c -> c.isPass() == true)
+                          .map(c -> c.name())
+                          .collect(Collectors.toList());
+    List<String> failed = children.stream()
+                          .filter(c -> c.isPass() == false)
+                          .map(c -> c.name())
+                          .collect(Collectors.toList());
+    HashMap<Boolean, List<String>> output20 = new HashMap<>();
+    output20.put(false, failed);
+    output20.put(true, passed);
+    System.out.println(output20);
+    
     // Output: {false=[Alice, Charlie], true=[Bob, David]}
 
     // 21. Joining Strings
     // Task: Given a list of words, join them into a single string separated by commas.
 
     List<String> languages = Arrays.asList("Java", "Python", "Rust", "R", "Go");
+    String output21 = languages.stream().collect(Collectors.joining(", "));
+    System.out.println(output21);
     // Output: "Java, Python, Rust, R, Go"
 
     // 22. Find First and Any
     // Task: Given a list of integers, find the first number that is divisible by 3.
     List<Integer> ages = Arrays.asList(4, 7, 9, 12, 16, 21);
-
+    List<Integer> dividedBy3 = ages.stream()
+              .filter(i -> i % 3 == 0).collect(Collectors.toList());
+    int output22 = dividedBy3.stream().min(Comparator.naturalOrder()).get();
+    System.out.println(output22);
     // Output: 9
 
     // 23. Limit and Skip
     // Task: Given a list of numbers, skip the first 3 elements and return the next 5 elements.
 
     List<Integer> elements = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    List<Integer> output23 = elements.stream().skip(3).limit(5)
+                  .collect(Collectors.toList());
+    System.out.println(output23);
     // Output: [4, 5, 6, 7, 8]
 
     // 24. Peek
@@ -358,7 +382,11 @@ public class StreamExercise {
     // intermediate results to the console.
 
     List<Integer> amounts = Arrays.asList(1, 2, 3, 4);
+    List<Integer> output24 = amounts.stream().map(a -> a * 2).collect(Collectors.toList());
     // Intermediate output: 2, 4, 6, 8
+    System.out.println(output24);
+    List<Integer> amounts2 = output24.stream().peek(a -> a.intValue()).collect(Collectors.toList());
+    System.out.println(amounts2);
     // Final Output: [2, 4, 6, 8]
 
     // 25. Optional and Streams
@@ -366,9 +394,20 @@ public class StreamExercise {
     // Handle the case where no such string exists using Optional.
 
     List<String> animals = Arrays.asList("cat", "tiger", "panda", "dog");
+    Optional<String> output25a = Optional.of(animals.stream()
+                  .filter(a -> a.length() > 4).findFirst().get());
+    System.out.println(output25a);
     // Output: Optional[tiger]
 
     List<String> animals2 = Arrays.asList("cat", "dog", "bird");
+    try {
+    Optional<String> output25b = Optional.ofNullable(
+    (animals2.stream().filter(a -> a.length() > 4).findAny().get()));
+    //System.out.println(output25b);
+    } catch (NoSuchElementException n) {
+      System.out.println(Optional.empty());
+      
+    }
     // Output: Optional.empty
 
     // 26. Custom Collector
@@ -386,11 +425,24 @@ public class StreamExercise {
     // Output: 28
   }
 
+public static record Children(String name, int score) {
+
+    // new Children("Alice", 45)
+    // new Children("Bob", 55)
+    // new Children("Charlie", 40)
+    // new Children("David", 70)
+    public boolean isPass() {
+      if (this.score >= 50) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+}
+
     // Create Student Class
     // new Student("Alice", 85)
     // new Student("Bob", 75)
-
-
 public static class Student {
   
   private String name;
